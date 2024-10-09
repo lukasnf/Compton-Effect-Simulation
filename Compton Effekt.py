@@ -82,7 +82,7 @@ def compton_scattering(photon):
 
 
 
-photon = Photon(200,600,10,10,np.sqrt(10**2 + 10**2),"white",15,c/f) #velocity nach v anpassen
+photon = Photon(200,600,10,10,np.sqrt(10**2 + 10**2),"white",15,c/f) #change velocity if needed
 electron = Electron(860,400,0,0,m_elektron,"yellow",20)
 collision = False
 
