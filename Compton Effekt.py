@@ -12,7 +12,7 @@ c = 3e8
 m_elektron = 9.11e-31
 h = 6.626e-34
 f = 3e19
-theta = 90 * ((2*np.pi)/360)
+theta = 180 * ((2*np.pi)/360)
 
 
 class Electron:
@@ -108,5 +108,3 @@ while True:
     text(f"p: {(h*f)/photon.velocity} Ns", font, "white", 1100, 110)
     pygame.display.flip()
     clock.tick(60)
-
-
