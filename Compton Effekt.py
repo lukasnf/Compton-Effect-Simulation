@@ -1,5 +1,6 @@
 import pygame
 import numpy as np
+import matplotlib.pyplot as plt
 import sys
 
 pygame.init()
@@ -8,11 +9,12 @@ pygame.display.set_caption("Compton Effekt")
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("Arial", 20)
 
+
 c = 3e8
 m_elektron = 9.11e-31
 h = 6.626e-34
 f = 3e19
-theta = np.radians(-45) #change scatter angle when needed
+theta = np.radians(-180) #change scatter angle when needed
 
 
 class Electron:
@@ -61,7 +63,7 @@ class Photon:
     def draw(self):
         self.circle = pygame.draw.circle(screen,self.color,(self.pos_x,self.pos_y),self.radius)
 
-    def scattering(self,theta): #!!
+    def collision(self,theta):
         self.v_x = self.velocity * np.cos(theta)
         self.v_y = self.velocity * np.sin(theta)
         self.pos_x += self.v_x
@@ -88,8 +90,14 @@ def compton_scattering(photon):
 photon = Photon(400,400,7,7,np.sqrt(7**2 + 7**2),"white",15,c/f) #change velocity if needed
 electron = Electron(860,400,0,0,m_elektron,"yellow",20)
 collision = False
+x = np.arange(0,np.pi*2,np.pi/2)
+y = (h/(m_elektron*c)*(1-np.cos(x))) + c/f
+plt.xlabel("collision angles")
+plt.ylabel("wavelength")
+plt.plot(x,y)
+plt.show()
 
-# Game Loop
+#Game Loop
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -105,7 +113,7 @@ while True:
     if check_collision(photon,electron) and not collision:
         electron.color = "green"
         compton_scattering(photon)
-        photon.scattering(theta)
+        photon.collision(theta)
         photon.has_collided = True
         collision = True
 
