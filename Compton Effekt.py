@@ -12,7 +12,7 @@ c = 3e8
 m_elektron = 9.11e-31
 h = 6.626e-34
 f = 3e19
-theta = np.radians(-90) #change scatter angle when needed
+theta = np.radians(-45) #change scatter angle when needed
 
 
 class Electron:
@@ -64,6 +64,8 @@ class Photon:
     def scattering(self,theta): #!!
         self.v_x = self.velocity * np.cos(theta)
         self.v_y = self.velocity * np.sin(theta)
+        self.pos_x += self.v_x
+        self.pos_y += self.v_y
 
 
 def check_collision(photon,electron):
