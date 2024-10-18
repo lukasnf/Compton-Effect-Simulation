@@ -12,7 +12,7 @@ c = 3e8
 m_elektron = 9.11e-31
 h = 6.626e-34
 f = 3e19
-theta = np.radians(180) #change angle if needed
+theta = np.radians(-90) #change scatter angle when needed
 
 
 class Electron:
@@ -39,27 +39,32 @@ class Photon:
         self.radius = radius
         self.wavelength = wavelength
         self.circle = None
+        self.has_collided = False
     def move(self,electron):
-        delta_x = electron.pos_x - self.pos_x
-        delta_y = electron.pos_y - self.pos_y
-        direction = np.sqrt(delta_x**2 + delta_y**2)
+        if not self.has_collided:
+            delta_x = electron.pos_x - self.pos_x
+            delta_y = electron.pos_y - self.pos_y
+            direction = np.sqrt(delta_x**2 + delta_y**2)
 
-        if direction != 0:
-            vect_x = delta_x/direction
-            vect_y = delta_y/direction
-            self.pos_x += vect_x * self.v_x
-            self.pos_y += vect_y * self.v_y
+            if direction != 0:
+                vect_x = delta_x/direction
+                vect_y = delta_y/direction
+                self.pos_x += vect_x * self.v_x
+                self.pos_y += vect_y * self.v_y
+        else:
+            self.pos_x += self.v_x
+            self.pos_y += self.v_y
 
     def erase_trail(self):
         pygame.draw.circle(screen,"black",(self.pos_x,self.pos_y),self.radius)
+
     def draw(self):
         self.circle = pygame.draw.circle(screen,self.color,(self.pos_x,self.pos_y),self.radius)
-    def scattering(self,electron): #!!
-        if check_collision(self, electron):
-            self.v_y = self.velocity * np.sin(theta)
-            self.v_x = self.velocity * np.cos(theta)
-            self.pos_x += self.v_x
-            self.pos_y += self.v_y
+
+    def scattering(self,theta): #!!
+        self.v_x = self.velocity * np.cos(theta)
+        self.v_y = self.velocity * np.sin(theta)
+
 
 def check_collision(photon,electron):
     distance = np.sqrt((photon.pos_x-electron.pos_x)**2 + (photon.pos_y-electron.pos_y)**2)
@@ -77,21 +82,8 @@ def compton_scattering(photon):
     new_wavelength = lambda_0 + delta_lambda
     photon.wavelength = new_wavelength
 
-def collision_angle(photon,electron,theta):
-    if theta == np.radians(90):
-        photon.pos_x = electron.pos_x
-    elif theta == np.radians(180):
-        photon.pos_y = electron.pos_y
-    else:
-        dx = electron.pos_x - photon.pos_x
-        dy = electron.pos_y - photon.pos_y
-        vect = np.sqrt(dx**2 + dy**2)
-        photon.pos_x = electron.pos_x - vect*np.cos(theta)
-        photon.pos_y = electron.pos_y - vect*np.sin(theta)
-    return photon.pos_x,photon.pos_y
 
-
-photon = Photon(400,600,7,7,np.sqrt(7**2 + 7**2),"white",15,c/f) #change velocity if needed
+photon = Photon(400,400,7,7,np.sqrt(7**2 + 7**2),"white",15,c/f) #change velocity if needed
 electron = Electron(860,400,0,0,m_elektron,"yellow",20)
 collision = False
 
@@ -104,16 +96,16 @@ while True:
 
     screen.fill((0,0,0))
     photon.erase_trail()
-    collision_angle(photon,electron,theta)
     photon.move(electron)
     photon.draw()
     electron.draw()
+
     if check_collision(photon,electron) and not collision:
         electron.color = "green"
         compton_scattering(photon)
+        photon.scattering(theta)
+        photon.has_collided = True
         collision = True
-        photon.scattering(electron)
-
 
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"p: {(h*f)/photon.velocity} Ns", font, "white", 1100, 110)
