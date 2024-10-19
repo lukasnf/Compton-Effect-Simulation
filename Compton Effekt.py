@@ -30,7 +30,6 @@ class Electron:
         self.velocity = velocity
         self.circle = None
 
-    # Drawing the electon
     def draw(self):
         self.circle = pygame.draw.circle(screen,self.color,(self.pos_x,self.pos_y),self.radius)
 
@@ -75,7 +74,6 @@ class Photon:
             self.pos_x += self.v_x
             self.pos_y += self.v_y
 
-    # Drawing the photon
     def draw(self):
         self.circle = pygame.draw.circle(screen,self.color,(self.pos_x,self.pos_y),self.radius)
 
@@ -92,7 +90,6 @@ def check_collision(photon,electron):
     if distance <= electron.radius + photon.radius:
         return True
 
-# Initializing text
 def text(text,font,color,x,y):
     text = font.render(text,True,color)
     screen.blit(text,(x,y))
@@ -109,10 +106,10 @@ def compton_scattering(photon):
 def reset():
     global photon, electron, collision
     photon = Photon(400, 400, 7, 7, np.sqrt(7 ** 2 + 7 ** 2), "white", 15, c / f, f)# adjust velocity if necessary
-    electron = Electron(860, 400, 5, 5, m_elektron, "yellow", 20, np.sqrt(5 ** 2 + 5 ** 2))  # adjust velocity if necessary
+    electron = Electron(860, 400, 5, 5, m_elektron, "yellow", 20, np.sqrt(5 ** 2 + 5 ** 2))# adjust velocity if necessary
     collision = False
 
-# Inistializing particles and flag
+# Initializing particles and flag
 photon = Photon(400,400,7,7,np.sqrt(7**2 + 7**2),"white",15,c/f,f) # adjust velocity if necessary
 electron = Electron(860,400,5,5,m_elektron,"yellow",20,np.sqrt(5**2 + 5**2)) # adjust velocity if necessary
 collision = False
@@ -149,11 +146,9 @@ while True:
     if photon.has_collided:
         electron.scatter(theta)
 
-    # Displays photon´s wavelength and energy
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
 
-    #Displays restart text
     text("Press space to restart!",font,"white",100,30)
 
     pygame.display.flip()
