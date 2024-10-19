@@ -149,7 +149,7 @@ while True:
     if photon.has_collided:
         electron.scatter(theta)
 
-    # Displays photon´s wavelentgh and energy
+    # Displays photon´s wavelength and energy
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
 
