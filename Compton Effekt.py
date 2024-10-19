@@ -153,6 +153,7 @@ while True:
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
 
+    #Displays restart text
     text("Press space to restart!",font,"white",100,30)
 
     pygame.display.flip()
