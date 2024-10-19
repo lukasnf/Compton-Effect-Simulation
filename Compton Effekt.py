@@ -109,7 +109,7 @@ def reset():
     electron = Electron(860, 400, 5, 5, m_elektron, "yellow", 20, np.sqrt(5 ** 2 + 5 ** 2))# adjust velocity if necessary
     collision = False
 
-# Inistializing particles and flag
+# Initializing particles and flag
 photon = Photon(400,400,7,7,np.sqrt(7**2 + 7**2),"white",15,c/f,f) # adjust velocity if necessary
 electron = Electron(860,400,5,5,m_elektron,"yellow",20,np.sqrt(5**2 + 5**2)) # adjust velocity if necessary
 collision = False
