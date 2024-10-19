@@ -15,7 +15,7 @@ c = 3e8 #speed of light
 m_elektron = 9.11e-31 #electron mass
 h = 6.626e-34 # planck-constant
 f = 3e19 # x-ray frequency
-theta = np.radians(-180) # adjust theta if necessary
+theta = np.radians(-45) # adjust theta if necessary
 
 # Particle: Electron
 class Electron:
@@ -105,6 +105,13 @@ def compton_scattering(photon):
     photon.wavelength = new_wavelength
     photon.frequency = c/new_wavelength
 
+# Reset function
+def reset():
+    global photon, electron, collision
+    photon = Photon(400, 400, 7, 7, np.sqrt(7 ** 2 + 7 ** 2), "white", 15, c / f, f)# adjust velocity if necessary
+    electron = Electron(860, 400, 5, 5, m_elektron, "yellow", 20, np.sqrt(5 ** 2 + 5 ** 2))  # adjust velocity if necessary
+    collision = False
+
 # Inistializing particles and flag
 photon = Photon(400,400,7,7,np.sqrt(7**2 + 7**2),"white",15,c/f,f) # adjust velocity if necessary
 electron = Electron(860,400,5,5,m_elektron,"yellow",20,np.sqrt(5**2 + 5**2)) # adjust velocity if necessary
@@ -124,6 +131,9 @@ while True:
         if event.type == pygame.QUIT:
             sys.exit()
             pygame.quit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                reset()
 
     screen.fill((0,0,0))
     photon.move(electron)
@@ -142,6 +152,8 @@ while True:
     # Displays photon´s wavelentgh and energy
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
+
+    text("Press space to restart!",font,"white",100,30)
 
     pygame.display.flip()
     clock.tick(60)
