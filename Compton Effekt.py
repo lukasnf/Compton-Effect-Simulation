@@ -135,7 +135,7 @@ while True:
             if event.key == pygame.K_SPACE:
                 reset()
 
-    screen.fill((0,0,0))
+    screen.fill("black")
     photon.move(electron)
     photon.draw()
     electron.draw()
