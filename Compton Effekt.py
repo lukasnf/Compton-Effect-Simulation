@@ -15,7 +15,7 @@ c = 3e8 #speed of light
 m_elektron = 9.11e-31 #electron mass
 h = 6.626e-34 # planck-constant
 f = 3e19 # x-ray frequency
-theta = np.radians(-45) # adjust theta if necessary
+theta = np.radians(-90) # adjust theta if necessary
 
 # Particle: Electron
 class Electron:
@@ -105,13 +105,13 @@ def compton_scattering(photon):
 # Reset function
 def reset():
     global photon, electron, collision
-    photon = Photon(400, 400, 7, 7, np.sqrt(7 ** 2 + 7 ** 2), "white", 15, c / f, f)# adjust velocity if necessary
-    electron = Electron(860, 400, 5, 5, m_elektron, "yellow", 20, np.sqrt(5 ** 2 + 5 ** 2))# adjust velocity if necessary
+    photon = Photon(100, 400, 7, 7, np.sqrt(7 ** 2 + 7 ** 2), "white", 15, c / f, f)# adjust velocity if necessary
+    electron = Electron(760, 400, 5, 5, m_elektron, "yellow", 20, np.sqrt(5 ** 2 + 5 ** 2))# adjust velocity if necessary
     collision = False
 
 # Initializing particles and flag
-photon = Photon(400,400,7,7,np.sqrt(7**2 + 7**2),"white",15,c/f,f) # adjust velocity if necessary
-electron = Electron(860,400,5,5,m_elektron,"yellow",20,np.sqrt(5**2 + 5**2)) # adjust velocity if necessary
+photon = Photon(100,400,7,7,np.sqrt(7**2 + 7**2),"white",15,c/f,f) # adjust velocity if necessary
+electron = Electron(760,400,5,5,m_elektron,"yellow",20,np.sqrt(5**2 + 5**2)) # adjust velocity if necessary
 collision = False
 
 # Creating the graph
@@ -148,6 +148,7 @@ while True:
 
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
+    text(f"θ: {np.degrees(-theta)}°",font,"white",1100,130)
 
     text("Press space to restart!",font,"white",100,30)
 
