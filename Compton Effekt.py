@@ -115,7 +115,7 @@ electron = Electron(760,450,5,5,m_elektron,"yellow",20,np.sqrt(5**2 + 5**2)) # a
 collision = False
 
 # Creating the graph
-x = np.arange(0,np.pi*2,np.pi/2)
+x = np.linspace(0, 2*np.pi, 100)
 y = (h/(m_elektron*c)*(1-np.cos(x))) + c/f
 plt.xlabel("collision angles")
 plt.ylabel("wavelength")
