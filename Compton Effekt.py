@@ -15,7 +15,9 @@ c = 3e8 #speed of light
 m_elektron = 9.11e-31 #electron mass
 h = 6.626e-34 # planck-constant
 f = 3e19 # x-ray frequency
-theta = np.radians(-45) # adjust theta if necessary
+theta = np.radians(45) # adjust theta if necessary, only works for theta = 90 , 45, 180
+
+
 
 # Particle: Electron
 class Electron:
@@ -34,12 +36,13 @@ class Electron:
         self.circle = pygame.draw.circle(screen,self.color,(self.pos_x,self.pos_y),self.radius)
 
     # Electron scattering after collision
-    def scatter(self,theta):
-        a = 10
-        if theta == -np.pi:
-            a = 1
-        self.v_x = self.velocity * np.cos(theta+np.pi/a)
-        self.v_y = self.velocity * -np.sin(theta+np.pi/a)
+    def scatter(self,theta,photon):
+        if theta == np.radians(90):
+            beta = np.radians(45)
+        else: beta = np.arcsin((7 * np.sin(theta))/5)
+
+        self.v_x = self.velocity * np.cos(-beta)
+        self.v_y = self.velocity * np.sin(-beta)
         self.pos_x += self.v_x
         self.pos_y += self.v_y
 
@@ -144,11 +147,11 @@ while True:
         collision = True
 
     if photon.has_collided:
-        electron.scatter(theta)
+        electron.scatter(theta,photon)
 
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
-    text(f"θ: {np.degrees(-theta)}°",font,"white",1100,130)
+    text(f"θ: {np.degrees(theta)}°",font,"white",1100,130)
 
     text("Press space to restart!",font,"white",100,30)
 
