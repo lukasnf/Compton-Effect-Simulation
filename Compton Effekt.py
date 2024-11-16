@@ -108,15 +108,12 @@ def compton_scattering(photon):
 # Reset function
 def reset():
     global photon, electron, collision
-    photon = Photon(100, 450, 7, 7, np.sqrt(7 ** 2 + 7 ** 2), "white", 15, c / f, f)# adjust velocity if necessary
-    electron = Electron(760, 450, 5, 5, m_elektron, "yellow", 20, np.sqrt(5 ** 2 + 5 ** 2))# adjust velocity if necessary
+    photon = Photon(100, 450, 7, 7, np.sqrt(7**2 + 7**2), "white", 15, c / f, f)# adjust velocity if necessary
+    electron = Electron(760, 450, 5, 5, m_elektron, "yellow", 20, np.sqrt(5**2 + 5**2))# adjust velocity if necessary
     collision = False
 
 # Initializing particles and flag
-photon = Photon(100,450,7,7,np.sqrt(7**2 + 7**2),"white",15,c/f,f) # adjust velocity if necessary
-electron = Electron(760,450,5,5,m_elektron,"yellow",20,np.sqrt(5**2 + 5**2)) # adjust velocity if necessary
-collision = False
-
+reset()
 # Creating the graph
 x = np.linspace(0, 2*np.pi, 100)
 y = (h/(m_elektron*c)*(1-np.cos(x))) + c/f
