@@ -14,8 +14,8 @@ font = pygame.font.SysFont("Arial", 20)
 c = 3e8 #speed of light
 m_elektron = 9.11e-31 #electron mass
 h = 6.626e-34 # planck-constant
-f = 3e19 # x-ray frequency
-theta = np.radians(45) # adjust theta if necessary, only works for theta = 90 , 45, 180
+f = 3e19 # gamma-ray frequency
+theta = np.radians(100) # adjust theta if necessary
 
 
 
@@ -37,9 +37,11 @@ class Electron:
 
     # Electron scattering after collision
     def scatter(self,theta,photon):
-        if theta == np.radians(90):
-            beta = np.radians(45)
-        else: beta = np.arcsin((7 * np.sin(theta))/5)
+        lambda_i = c/f
+        lambda_f = (h/(m_elektron*c)*(1-np.cos(theta))) + c/f
+        p_i = h/lambda_i
+        p_f = h/lambda_f
+        beta = np.arctan((p_i-p_f*np.cos(theta))/p_f * np.sin(theta))
 
         self.v_x = self.velocity * np.cos(-beta)
         self.v_y = self.velocity * np.sin(-beta)
@@ -150,7 +152,7 @@ while True:
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
     text(f"θ: {np.degrees(theta)}°",font,"white",1100,130)
 
-    text("Press space to restart!",font,"white",100,30)
+    text("Space to restart!",font,"white",100,30)
 
     pygame.display.flip()
     clock.tick(60)
