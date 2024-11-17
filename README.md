@@ -1,4 +1,4 @@
-19.10.24: Project finished. Works best for theta = 45, 90 , 180 degrees 
+19.10.24: Project finished. 
 
 
 
