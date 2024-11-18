@@ -15,7 +15,7 @@ c = 3e8 #speed of light
 m_elektron = 9.11e-31 #electron mass
 h = 6.626e-34 # planck-constant
 f = 3e19 # gamma-ray frequency
-theta = np.radians(180) # adjust theta if necessary
+theta = np.radians(45) # adjust theta if necessary
 
 
 
@@ -41,7 +41,7 @@ class Electron:
         lambda_f = (h/(m_elektron*c)*(1-np.cos(theta))) + c/f
         p_i = h/lambda_i
         p_f = h/lambda_f
-        beta = np.arctan((p_i-p_f*np.cos(theta))/p_f * np.sin(theta))
+        beta = np.arctan((p_f * np.sin(theta)/p_i-p_f*np.cos(theta)))
 
         self.v_x = self.velocity * np.cos(-beta)
         self.v_y = self.velocity * np.sin(-beta)
