@@ -96,11 +96,11 @@ class Slider:
         self.pos_y = pos_y
         self.width = width
         self.initial_val = initial_val
-        self.val = initial_val
+        self.theta = initial_val
         self.min = min
         self.max = max
         self.color = color
-        self.circle_x = self.pos_x + (self.val - self.min) / (self.max - self.min) * self.width
+        self.circle_x = self.pos_x + (self.theta - self.min) / (self.max - self.min) * self.width
         self.line = None
         self.circle = None
 
@@ -114,10 +114,10 @@ class Slider:
                 mouse_pos,_ = pygame.mouse.get_pos()
                 if self.pos_x <= mouse_pos <= self.pos_x+self.width:
                     self.circle_x = mouse_pos
-                    self.val = self.min+(self.max-self.min)/self.width * (mouse_pos-self.pos_x) # calculated by linear interpolation
+                    self.theta = self.min+(self.max-self.min)/self.width * (mouse_pos-self.pos_x) # calculated by linear interpolation
 
     def angle(self):
-        return np.radians(self.val)
+        return np.radians(self.theta)
 
 # Checking for the collision
 def check_collision(photon,electron):
@@ -185,9 +185,7 @@ while True:
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
     text("Space to restart",font,"white",100,110)
-    text(f"θ: {slider.val}°",font,"white",1100,130)
-
-
+    text(f"θ: {slider.theta}°",font,"white",1100,130)
 
     pygame.display.flip()
     clock.tick(60)
