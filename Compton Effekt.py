@@ -110,11 +110,11 @@ class Slider:
 
     def move_knob(self,event):
         if event.type == MOUSEBUTTONDOWN or event.type == MOUSEMOTION:
-            if pygame.mouse.get_pressed()[0] == 1:
+            if pygame.mouse.get_pressed()[0] == True:
                 mouse_pos,_ = pygame.mouse.get_pos()
                 if self.pos_x <= mouse_pos <= self.pos_x+self.width:
                     self.circle_x = mouse_pos
-                    self.val = self.min+(self.max-self.min)/self.width * (mouse_pos-self.pos_x)
+                    self.val = self.min+(self.max-self.min)/self.width * (mouse_pos-self.pos_x) # calculated by linear interpolation
 
     def angle(self):
         return np.radians(self.val)
@@ -146,7 +146,7 @@ def reset():
 
 
 reset()
-slider = Slider(100, 700, 400, 90, 0, 180, "white")
+slider = Slider(100, 600, 400, 90, 0, 180, "white")
 #Graph
 x = np.linspace(0, 2*np.pi, 100)
 y = (h/(m_elektron*c)*(1-np.cos(x))) + c/f
