@@ -15,7 +15,7 @@ c = 3e8 #speed of light
 m_elektron = 9.11e-31 #electron mass
 h = 6.626e-34 # planck-constant
 f = 3e19 # gamma-ray frequency
-theta = np.radians(100) # adjust theta if necessary
+theta = np.radians(180) # adjust theta if necessary
 
 
 
@@ -152,7 +152,6 @@ while True:
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
     text(f"θ: {np.degrees(theta)}°",font,"white",1100,130)
 
-    text("Space to restart!",font,"white",100,30)
 
     pygame.display.flip()
     clock.tick(60)
