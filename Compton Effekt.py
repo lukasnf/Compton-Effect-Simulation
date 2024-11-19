@@ -186,6 +186,8 @@ while True:
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
     text("Space to restart",font,"white",100,110)
     text(f"θ: {slider.theta}°",font,"white",1100,130)
+    text("0°",font,"white",90,620)
+    text("180°",font,"white",490,620)
 
     pygame.display.flip()
     clock.tick(60)
