@@ -114,7 +114,7 @@ class Slider:
                 mouse_pos,_ = pygame.mouse.get_pos()
                 if self.pos_x <= mouse_pos <= self.pos_x+self.width:
                     self.circle_x = mouse_pos
-                    self.theta = self.min+(self.max-self.min)/self.width * (mouse_pos-self.pos_x) # calculated by linear interpolation
+                    self.theta = self.min+(self.max-self.min)/self.width * (mouse_pos-self.pos_x) # calculation based on linear interpolation
 
     def angle(self):
         return np.radians(self.theta)
