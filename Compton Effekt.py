@@ -63,7 +63,7 @@ class Photon:
         self.has_collided = False
 
     # Moving the Photon to the electron (photon_pos doensnt matter) -> same y-pos highly recommended
-    # wasnt tested with dfferent y-pos
+    # wasnt tested with different y-pos
     def move(self,electron):
         if not self.has_collided:
             delta_x = electron.pos_x - self.pos_x
@@ -89,7 +89,7 @@ class Photon:
         self.pos_x += self.v_x
         self.pos_y += self.v_y
 
-# SLider to adjust theta, made it with a tutorial :)
+# Slider to adjust theta
 class Slider:
     def __init__(self,pos_x,pos_y,width,initial_val,min,max,color):
         self.pos_x = pos_x
@@ -147,7 +147,7 @@ def reset():
 
 reset()
 slider = Slider(100, 600, 400, 90, 0, 180, "white")
-#Graph
+#Graph: wavelength(theta)
 x = np.linspace(0, 2*np.pi, 100)
 y = (h/(m_elektron*c)*(1-np.cos(x))) + c/f
 plt.xlabel("collision angles")
