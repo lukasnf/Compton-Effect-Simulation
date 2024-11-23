@@ -184,7 +184,7 @@ while True:
 
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
-    text("Space to restart",font,"white",100,110)
+    text("Space to restart",font,"white",100,90)
     text(f"θ: {slider.theta}°",font,"white",1100,130)
     text("0°",font,"white",90,620)
     text("180°",font,"white",490,620)
