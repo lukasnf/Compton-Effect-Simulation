@@ -149,9 +149,9 @@ reset()
 slider = Slider(100, 600, 400, 90, 0, 180, "white")
 #Graph: wavelength(theta)
 x = np.linspace(0, 2*np.pi, 100)
-y = (h/(m_elektron*c)*(1-np.cos(x))) + c/f
+y = (h/(m_elektron*c)*(1-np.cos(x)))
 plt.xlabel("collision angles")
-plt.ylabel("wavelength")
+plt.ylabel("wavelength shift")
 plt.plot(x,y)
 plt.show()
 
