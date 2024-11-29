@@ -39,58 +39,7 @@ Start the simulation to observe a photon colliding with an electron.
 Adjust the scattering angle using the slider.
 Observe the wavelength and energy changes in real time.
 Press the spacebar to restart the simulation.
-📖 Background
 
-The Compton Effect is a cornerstone of quantum physics, demonstrating the particle nature of light. It is mathematically expressed as:
-
-λ
-′
-−
-λ
-=
-h
-m
-e
-c
-(
-1
-−
-cos
-⁡
-θ
-)
-λ 
-′
- −λ= 
-m 
-e
-​	
- c
-h
-​	
- (1−cosθ)
-
-Where:
-
-λ
-λ: Initial wavelength
-λ
-′
-λ 
-′
- : Scattered wavelength
-h
-h: Planck's constant
-m
-e
-m 
-e
-​	
- : Electron mass
-c
-c: Speed of light
-θ
-θ: Scattering angle
 📜 License
 
 This project is licensed under the MIT License.
@@ -102,6 +51,7 @@ Contributions are welcome! Feel free to open an issue or submit a pull request.
 📧 Contact
 
 For questions or feedback, please reach out to [Your Name] at [your.email@example.com].
+
 
 
 
