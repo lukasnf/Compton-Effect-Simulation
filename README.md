@@ -1,11 +1,12 @@
 # Compton Effect Simulation
 
-This project is an **interactive simulation** of the **Compton Effect**, created using **Pygame**. The Compton Effect describes the scattering of photons (light particles) by electrons, resulting in a change in the photon's wavelength depending on the scattering angle.
+This project is an **interactive simulation** of the **Compton Effect**, created using **Pygame**. The Compton Effect describes the scattering of high energy photons by electrons, resulting in a change in the photon's wavelength depending on the scattering angle. This phenomenon is evidence for the particle nature of 
+light.
 
 ## 🖥️ Preview
 
 The simulation features:
-- Dynamic visualization of photon-electron collision events.
+- visualization of photon-electron collision.
 - Real-time calculations of the photon's wavelength and energy after scattering.
 - An adjustable slider to control the scattering angle (θ).
 - A graph illustrating the relationship between wavelength shift and scattering angle.
