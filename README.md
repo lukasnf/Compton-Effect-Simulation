@@ -26,8 +26,24 @@ Ensure you have the following installed:
 - **Matplotlib**
 
 You can install the required dependencies using `pip`:
-```bash
+```bash 
 pip install pygame matplotlib
+```
+
+### Installation
+- Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/compton-effect-simulation.git
+   cd compton-effect-simulation
+   ```
+- Run the simulation:
+    ```bash
+    python main.py
+    ```
+
+#### Have fun :)
+
+
 
 
 
