@@ -34,7 +34,7 @@ pip install pygame matplotlib
 ### Installation
 - Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/compton-effect-simulation.git
+   git clone https://github.com/lukasnf/Compton-Effect-Simulation-Pygame-Physics.git
    cd compton-effect-simulation
    ```
 - Run the simulation:
