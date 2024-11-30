@@ -13,7 +13,6 @@ The simulation features:
 
 ## 🛠️ Features
 
-- **Particle Simulation**: Models the dynamics of the photon and electron based on physical principles.
 - **Adjustable Scattering Angle**: Select a scattering angle between 0° and 180° using a slider.
 - **Wavelength Shift Visualization**: Displays how the photon's wavelength changes with the scattering angle.
 - **Restart Functionality**: Press the spacebar to reset the simulation.
