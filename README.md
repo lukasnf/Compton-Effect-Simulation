@@ -39,7 +39,7 @@ pip install pygame matplotlib
    ```
 - Run the simulation:
     ```bash
-    python main.py
+    python "Compton Effekt.py"
     ```
 
 #### Have fun :)
