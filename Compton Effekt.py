@@ -90,6 +90,7 @@ class Photon:
         self.pos_y += self.v_y
 
 # Slider to adjust theta
+# matches mouse_pos to an angle 0 - 180 deg
 class Slider:
     def __init__(self,pos_x,pos_y,width,initial_val,min,max,color):
         self.pos_x = pos_x
