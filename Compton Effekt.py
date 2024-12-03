@@ -152,6 +152,7 @@ x = np.linspace(0, 2*np.pi, 100)
 y = (h/(m_elektron*c)*(1-np.cos(x)))
 plt.xlabel("collision angles")
 plt.ylabel("wavelength shift")
+plt.grid()
 plt.plot(x,y)
 plt.show()
 
