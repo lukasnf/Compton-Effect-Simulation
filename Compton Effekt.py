@@ -155,7 +155,8 @@ plt.xlabel("collision angles")
 plt.ylabel("wavelength shift")
 plt.grid()
 plt.plot(x,y)
-plt.show()
+#plt.show()
+start = False
 
 #Game Loop
 while True:
@@ -164,29 +165,34 @@ while True:
             sys.exit()
             pygame.quit()
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
+            if event.key == pygame.K_SPACE: #Space is used as an restart button
+                start = False
                 reset()
+            if event.key == pygame.K_ESCAPE: #Escape starts the simulation
+                start = True
         slider.move_knob(event)
 
-    theta = slider.angle()
     screen.fill("black")
-    photon.move(electron)
-    photon.draw()
-    electron.draw()
     slider.draw()
 
-    if check_collision(photon,electron) and not collision:
-        compton_scattering(photon)
-        photon.scatter(theta)
-        photon.has_collided = True
-        collision = True
+    if start:
+        theta = slider.angle()
+        photon.move(electron)
+        photon.draw()
+        electron.draw()
 
-    if photon.has_collided:
-        electron.scatter(theta,photon)
+        if check_collision(photon,electron) and not collision:
+            compton_scattering(photon)
+            photon.scatter(theta)
+            photon.has_collided = True
+            collision = True
+
+        if photon.has_collided:
+            electron.scatter(theta,photon)
 
     text(f"λ: {photon.wavelength} m",font,"white",1100,90)
     text(f"E: {(h*photon.frequency)*6.242e+18/1000} keV", font, "white", 1100, 110)
-    text("Space to restart",font,"white",100,90)
+    #text("Space to restart",font,"white",100,90)
     text(f"θ: {slider.theta}°",font,"white",1100,130)
     text("0°",font,"white",90,620)
     text("180°",font,"white",490,620)
