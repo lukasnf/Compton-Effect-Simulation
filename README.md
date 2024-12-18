@@ -15,7 +15,7 @@ The simulation features:
 
 - **Adjustable Scattering Angle**: Select a scattering angle between 0° and 180° using a slider.
 - **Wavelength Shift Visualization**: Displays how the photon's wavelength changes with the scattering angle.
-- **Restart Functionality**: Press the spacebar to reset the simulation.
+- **Button Functionality**: *Space* resets the simulation, *Escape* is used as an initial start button.
 
 ## 🚀 Getting Started
 
